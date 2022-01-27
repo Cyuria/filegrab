@@ -12,7 +12,6 @@ screen = pygame.display.set_mode((X, Y), flags = pygame.NOFRAME)
 font = pygame.font.Font('./Assets/ComicMono.ttf', 32)
 
 url = ''
-
 giturl = ''
 
 colour = (15, 15, 50)
@@ -40,7 +39,6 @@ def stop():
 
 def getProgress():
     global progress, fileslst
-    #print((100 * progress) // len(fileslst))
     if len(fileslst):
         return ((progress) * 100) // len(fileslst)
     else:
@@ -54,7 +52,6 @@ def updateScreen():
     for i in range(3):
         tmp = int((colour[i] - colourstate[i]) / abs(colour[i] - colourstate[i]) if colour[i] != colourstate[i] else 0)
         tmp = step * tmp if abs(colour[i] - colourstate[i]) >= step else tmp
-        #print(tmp, end=' ')
         colourstate[i] += tmp
     
     screen.fill(colourstate)
