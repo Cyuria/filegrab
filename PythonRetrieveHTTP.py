@@ -40,7 +40,7 @@ def stop():
 def getProgress():
     global progress, fileslst
     if len(fileslst):
-        return ((progress) * 100) // len(fileslst)
+        return (progress * 100) // len(fileslst)
     else:
         return 0
 
@@ -50,6 +50,10 @@ def updateScreen():
     step = 1
 
     for i in range(3):
+        # divide the difference in colour values by the positive version of itself
+        # basically if the number is negative, tmp = -1
+        # if the number is 0, tmp = 0
+        # and if the number is positive, tmp = 1
         tmp = int((colour[i] - colourstate[i]) / abs(colour[i] - colourstate[i]) if colour[i] != colourstate[i] else 0)
         tmp = step * tmp if abs(colour[i] - colourstate[i]) >= step else tmp
         colourstate[i] += tmp
